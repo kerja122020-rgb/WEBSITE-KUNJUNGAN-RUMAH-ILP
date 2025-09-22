@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APLIKASI PENDATAAN POSYANDU</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .form-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .input-group {
+            transition: all 0.3s ease;
+        }
+        .input-group:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">📊 APLIKASI PENDAAN POSYANDU</h1>
+            <p class="text-gray-600">Sistem Informasi Kesehatan Keluarga</p>
+        </div>
+
+        <!-- Form Container -->
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div class="form-section p-6 text-white text-center">
+                <h2 class="text-2xl font-semibold">Form Pendataan Keluarga</h2>
+                <p class="mt-2 opacity-90">Silakan isi data dengan lengkap dan benar</p>
+            </div>
+
+            <form id="posyanduForm" class="p-8 space-y-6">
+                <!-- Informasi Dasar -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="input-group bg-gray-50 p-4 rounded-xl">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Desa</label>
+                        <select name="namaDesa" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Pilih Desa</option>
+                            <option value="Desa Ganra">Desa Ganra</option>
+                            <option value="Desa Belo">Desa Belo</option>
+                            <option value="Desa Enrekeng">Desa Enrekeng</option>
+                            <option value="Desa Lompulle">Desa Lompulle</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group bg-gray-50 p-4 rounded-xl">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Posyandu</label>
+                        <select name="namaPosyandu" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="">Pilih Posyandu</option>
+                            <option value="Bakke I">Bakke I</option>
+                            <option value="Bakke II">Bakke II</option>
+                            <option value="Atasya I">Atasya I</option>
+                            <option value="Atasya II">Atasya II</option>
+                            <option value="Paomallimpoe">Paomallimpoe</option>
+                            <option value="Batumemmanae">Batumemmanae</option>
+                            <option value="Mannagae">Mannagae</option>
+                            <option value="Cennoe">Cennoe</option>
+                            <option value="Belo">Belo</option>
+                            <option value="Enrekeng I">Enrekeng I</option>
+                            <option value="Enrekeng II">Enrekeng II</option>
+                            <option value="Mannennungeng">Mannennungeng</option>
+                            <option value="Mappesonae">Mappesonae</option>
+                            <option value="Sipatuo">Sipatuo</option>
+                            <option value="Masengereng">Masengereng</option>
+                            <option value="Sipatokkong">Sipatokkong</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="input-group bg-gray-50 p-4 rounded-xl">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nama Kader</label>
+                        <input type="text" name="namaKader" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan nama kader">
+                    </div>
+
+                    <div class="input-group bg-gray-50 p-4 rounded-xl">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nomor RT</label>
+                        <input type="number" name="nomorRT" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Contoh: 001">
+                    </div>
+
+                    <div class="input-group bg-gray-50 p-4 rounded-xl">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nomor KK</label>
+                        <input type="text" name="nomorKK" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="16 digit nomor KK">
+                    </div>
+                </div>
+
+                <div class="input-group bg-gray-50 p-4 rounded-xl">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon Keluarga</label>
+                    <input type="tel" name="nomorTelepon" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Contoh: 08123456789">
+                </div>
+
+                <!-- Data Kepala Keluarga -->
+                <div class="bg-blue-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">👨‍👩‍👧‍👦 Data Kepala Keluarga</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
+                            <input type="text" name="namaKepalaKeluarga" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">NIK</label>
+                            <input type="text" name="nikKepalaKeluarga" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="16 digit NIK">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Lahir</label>
+                            <input type="date" name="tanggalLahirKepalaKeluarga" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Anggota Keluarga -->
+                <div class="bg-green-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">👥 Data Anggota Keluarga</h3>
+                    <div id="anggotaKeluargaContainer">
+                        <!-- Anggota keluarga akan ditambahkan secara dinamis -->
+                    </div>
+                    <button type="button" id="tambahAnggota" class="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors">
+                        ➕ Tambah Anggota Keluarga
+                    </button>
+                </div>
+
+                <!-- Kondisi Sanitasi -->
+                <div class="bg-yellow-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🏠 Kondisi Sanitasi dan Lingkungan</h3>
+                    
+                    <!-- Air Bersih -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Apakah tersedia sarana air bersih?</label>
+                        <div class="flex gap-4 mb-3">
+                            <label class="flex items-center">
+                                <input type="radio" name="airBersih" value="Ya" class="mr-2" onchange="toggleSumberAir(true)">
+                                <span>Ya</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="airBersih" value="Tidak" class="mr-2" onchange="toggleSumberAir(false)">
+                                <span>Tidak</span>
+                            </label>
+                        </div>
+                        <div id="sumberAirContainer" class="hidden">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Apakah sumber air terlindung?</label>
+                            <select name="sumberAir" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Pilih sumber air</option>
+                                <option value="PDAM">PDAM (Terlindung)</option>
+                                <option value="Sumur Pompa">Sumur Pompa (Terlindung)</option>
+                                <option value="Sumur Gali Terlindung">Sumur Gali Terlindung</option>
+                                <option value="Mata Air Terlindung">Mata Air Terlindung</option>
+                                <option value="Sumur Terbuka">Sumur Terbuka (Tidak Terlindung)</option>
+                                <option value="Air Sungai">Air Sungai (Tidak Terlindung)</option>
+                                <option value="Air Danau">Air Danau (Tidak Terlindung)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Jamban -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Apakah tersedia jamban keluarga?</label>
+                        <div class="flex gap-4 mb-3">
+                            <label class="flex items-center">
+                                <input type="radio" name="jamban" value="Ya" class="mr-2" onchange="toggleJamban(true)">
+                                <span>Ya</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="jamban" value="Tidak" class="mr-2" onchange="toggleJamban(false)">
+                                <span>Tidak</span>
+                            </label>
+                        </div>
+                        <div id="jenisJambanContainer" class="hidden">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Apakah jamban saniter?</label>
+                            <select name="jenisJamban" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Pilih jenis jamban</option>
+                                <option value="Kloset">Kloset (Saniter)</option>
+                                <option value="Leher Angsa">Leher Angsa (Saniter)</option>
+                                <option value="Plengsengan">Plengsengan (Saniter)</option>
+                                <option value="Cemplung">Cemplung (Tidak Saniter)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Ventilasi -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Apakah rumah memiliki ventilasi yang cukup?</label>
+                        <div class="flex gap-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="ventilasi" value="Ya" class="mr-2" required>
+                                <span>Ya</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="ventilasi" value="Tidak" class="mr-2" required>
+                                <span>Tidak</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Jentik Nyamuk -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Apakah terdapat jentik nyamuk?</label>
+                        <div class="flex gap-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="jentikNyamuk" value="Ya" class="mr-2" required>
+                                <span>Ya</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="jentikNyamuk" value="Tidak" class="mr-2" required>
+                                <span>Tidak</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Tanaman Obat -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Apakah keluarga memiliki minimal 3 jenis tanaman obat keluarga?</label>
+                        <div class="flex gap-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="tanamanObat" value="Ya" class="mr-2" required>
+                                <span>Ya</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="tanamanObat" value="Tidak" class="mr-2" required>
+                                <span>Tidak</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kondisi Kesehatan -->
+                <div class="bg-red-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">🏥 Kondisi Kesehatan Keluarga</h3>
+                    
+                    <!-- Gangguan Jiwa -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Apakah ada anggota keluarga yang mengalami gangguan jiwa?</label>
+                        <div class="flex gap-4 mb-3">
+                            <label class="flex items-center">
+                                <input type="radio" name="gangguanJiwa" value="Ya" class="mr-2" onchange="toggleGangguanJiwa(true)">
+                                <span>Ya</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="gangguanJiwa" value="Tidak" class="mr-2" onchange="toggleGangguanJiwa(false)">
+                                <span>Tidak</span>
+                            </label>
+                        </div>
+                        <div id="namaGangguanJiwaContainer" class="hidden">
+                            <input type="text" name="namaGangguanJiwa" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tuliskan nama anggota keluarga">
+                        </div>
+                    </div>
+
+                    <!-- Penyakit -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Adakah anggota keluarga yang menderita:</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="penyakit" value="TBC" class="mr-2">
+                                <span>TBC</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="penyakit" value="Hipertensi" class="mr-2">
+                                <span>Hipertensi</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="penyakit" value="Diabetes Mellitus" class="mr-2">
+                                <span>Diabetes Mellitus</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="penyakit" value="Tidak ada" class="mr-2">
+                                <span>Tidak ada</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Merokok -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Adakah anggota keluarga yang merokok?</label>
+                        <div class="flex gap-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="merokok" value="Ya" class="mr-2" required>
+                                <span>Ya</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="merokok" value="Tidak" class="mr-2" required>
+                                <span>Tidak</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center pt-6">
+                    <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105">
+                        📤 Kirim Data ke Spreadsheet
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Status Message -->
+        <div id="statusMessage" class="hidden fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50"></div>
+    </div>
+
+    <script>
+        let anggotaCount = 0;
+        const maxAnggota = 6;
+
+        // Fungsi untuk menambah anggota keluarga
+        document.getElementById('tambahAnggota').addEventListener('click', function() {
+            if (anggotaCount < maxAnggota) {
+                anggotaCount++;
+                const container = document.getElementById('anggotaKeluargaContainer');
+                const anggotaDiv = document.createElement('div');
+                anggotaDiv.className = 'mb-4 p-4 border border-gray-200 rounded-lg';
+                anggotaDiv.innerHTML = `
+                    <div class="flex justify-between items-center mb-3">
+                        <h4 class="font-medium text-gray-700">Anggota Keluarga ${anggotaCount}</h4>
+                        <button type="button" onclick="hapusAnggota(this)" class="text-red-500 hover:text-red-700">❌</button>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-3">
+                        <input type="text" name="namaAnggota${anggotaCount}" placeholder="Nama Lengkap" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <input type="text" name="nikAnggota${anggotaCount}" placeholder="NIK (16 digit)" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <input type="date" name="tanggalLahirAnggota${anggotaCount}" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                `;
+                container.appendChild(anggotaDiv);
+
+                if (anggotaCount >= maxAnggota) {
+                    document.getElementById('tambahAnggota').style.display = 'none';
+                }
+            }
+        });
+
+        // Fungsi untuk menghapus anggota keluarga
+        function hapusAnggota(button) {
+            button.closest('.mb-4').remove();
+            anggotaCount--;
+            document.getElementById('tambahAnggota').style.display = 'block';
+            
+            // Update nomor anggota
+            const anggotaElements = document.querySelectorAll('#anggotaKeluargaContainer .mb-4');
+            anggotaElements.forEach((element, index) => {
+                const h4 = element.querySelector('h4');
+                h4.textContent = `Anggota Keluarga ${index + 1}`;
+            });
+        }
+
+        // Toggle functions
+        function toggleSumberAir(show) {
+            const container = document.getElementById('sumberAirContainer');
+            if (show) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        function toggleJamban(show) {
+            const container = document.getElementById('jenisJambanContainer');
+            if (show) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        function toggleGangguanJiwa(show) {
+            const container = document.getElementById('namaGangguanJiwaContainer');
+            if (show) {
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        // Fungsi untuk menampilkan pesan status
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'} text-white`;
+            statusDiv.textContent = message;
+            statusDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                statusDiv.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Handle form submission
+        document.getElementById('posyanduForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Send data to Google Sheets
+            showStatus('⏳ Mengirim data ke spreadsheet...', 'info');
+            
+            // URL Google Apps Script Anda - GANTI DENGAN URL YANG BENAR
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx-N8aLs7IIUsPnEVAKstgtdQbgIozrZgD2FMXOiwiKLAL9jV2b9qfUBmCSL3tv1zVUyA/exec';
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Get all form values
+            for (let [key, value] of formData.entries()) {
+                if (key === 'penyakit') {
+                    if (!data[key]) data[key] = [];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Handle penyakit array
+            if (data.penyakit && Array.isArray(data.penyakit)) {
+                data.penyakit = data.penyakit.join(', ');
+            }
+            
+            // Collect family members data
+            const anggotaKeluarga = [];
+            for (let i = 1; i <= anggotaCount; i++) {
+                const nama = formData.get(`namaAnggota${i}`);
+                const nik = formData.get(`nikAnggota${i}`);
+                const tanggalLahir = formData.get(`tanggalLahirAnggota${i}`);
+                
+                if (nama || nik || tanggalLahir) {
+                    anggotaKeluarga.push(`${nama || ''} | ${nik || ''} | ${tanggalLahir || ''}`);
+                }
+            }
+            
+            // Add processed data
+            data.daftarAnggotaKeluarga = anggotaKeluarga.join(' || ');
+            data.waktuPengisian = new Date().toLocaleString('id-ID');
+            
+            console.log('Data yang akan dikirim:', data);
+            
+            // Method 1: Try with JSON POST (sesuai Apps Script Anda)
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                console.log('JSON POST berhasil');
+                showStatus('✅ Data berhasil dikirim ke spreadsheet!', 'success');
+                resetForm();
+            })
+            .catch(error => {
+                console.log('JSON POST gagal, mencoba form-data...', error);
+                
+                // Method 2: Try with form-data
+                const formDataToSend = new FormData();
+                Object.keys(data).forEach(key => {
+                    formDataToSend.append(key, data[key] || '');
+                });
+                
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formDataToSend
+                })
+                .then(() => {
+                    console.log('Form-data POST berhasil');
+                    showStatus('✅ Data berhasil dikirim ke spreadsheet!', 'success');
+                    resetForm();
+                })
+                .catch(error2 => {
+                    console.log('Form-data POST gagal, mencoba URL params...', error2);
+                    
+                    // Method 3: Try with URL parameters
+                    const params = new URLSearchParams();
+                    Object.keys(data).forEach(key => {
+                        params.append(key, data[key] || '');
+                    });
+                    
+                    const getURL = `${scriptURL}?${params.toString()}`;
+                    
+                    fetch(getURL, {
+                        method: 'GET',
+                        mode: 'no-cors'
+                    })
+                    .then(() => {
+                        console.log('GET dengan params berhasil');
+                        showStatus('✅ Data berhasil dikirim ke spreadsheet!', 'success');
+                        resetForm();
+                    })
+                    .catch(error3 => {
+                        console.log('Semua metode gagal:', error3);
+                        showStatus('❌ Gagal mengirim data. Periksa URL Google Apps Script Anda.', 'error');
+                    });
+                });
+            });
+            
+            function resetForm() {
+                // Reset form
+                document.getElementById('posyanduForm').reset();
+                document.getElementById('anggotaKeluargaContainer').innerHTML = '';
+                anggotaCount = 0;
+                document.getElementById('tambahAnggota').style.display = 'block';
+                
+                // Hide conditional fields
+                document.getElementById('sumberAirContainer').classList.add('hidden');
+                document.getElementById('jenisJambanContainer').classList.add('hidden');
+                document.getElementById('namaGangguanJiwaContainer').classList.add('hidden');
+                
+                // Re-add first family member
+                setTimeout(() => {
+                    document.getElementById('tambahAnggota').click();
+                }, 100);
+            }
+        });
+
+        // Initialize with one family member input
+        document.getElementById('tambahAnggota').click();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f587b7d0abec69',t:'MTc1NzkxMjEwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
